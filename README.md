@@ -21,3 +21,8 @@ WIP https://github.com/ksyunnnn/hands-on-t3-app/issues/1
 
 WIP
 https://github.com/ksyunnnn/hands-on-t3-app/issues/4
+
+## 参加者があ当日までに準備しておくとよさそうなこと
+
+WIP
+https://github.com/ksyunnnn/hands-on-t3-app/issues/5
