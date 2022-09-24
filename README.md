@@ -13,7 +13,7 @@
 ## 概要
 
 - 日時: 2022年10月1日(土) 16時〜20時(予定)
-- 場所: umiちゃんオフィス(渋谷)
+- 場所: [umi](https://twitter.com/umiremix)ちゃんオフィス(渋谷)
 
 WIP https://github.com/ksyunnnn/hands-on-t3-app/issues/1
 
