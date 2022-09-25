@@ -10,6 +10,10 @@
   巷で話題の<a rel="noopener noreferrer" target="_blank" href="https://init.tips">T3 Stack</a>やるよ！
 </p>
 
+<p align="center">
+  T3 Stackってなに？ 👉 <a rel="noopener noreferrer" target="_blank" href="https://zenn.dev/mikinovation/articles/20220911-t3-stack">参考記事</a>
+</p>
+
 ## 概要
 
 - 日時: 2022年10月1日(土) 16時〜20時(予定)
