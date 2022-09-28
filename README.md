@@ -37,7 +37,6 @@ umiちゃん到着次第。
 - はじめに
     - T3 Stackってなに
     - 自己紹介
-    - アイスブレイク
     - 流れの説明
 - T3 Stack
 - TypeScript
