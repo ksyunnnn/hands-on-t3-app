@@ -16,17 +16,44 @@
 
 ## 概要
 
-- 日時: 2022年10月1日(土) 16時〜20時(予定)
-- 場所: [umi](https://twitter.com/umiremix)ちゃんオフィス(渋谷)
-
-WIP https://github.com/ksyunnnn/hands-on-t3-app/issues/1
+### 日時
+2022年10月1日(土) 16時〜20時目処
+### 場所
+umiちゃんオフィス(渋谷)
+〒150-0002 東京都渋谷区渋谷3-7-7 窪田ビル2F
+#### Google Map
+https://goo.gl/maps/XYnKJUJtYYYn31x78
 
 ## タイムテーブル
 
-WIP
-https://github.com/ksyunnnn/hands-on-t3-app/issues/4
+### 買い出し : 15時30分 ~ 
+こばしゅんがいくよ〜誰か手伝って〜〜〜！
+
+### 開場、挨拶 : 16時00分 ~
+umiちゃん到着次第。
+
+### スタート: 16時20分 ~
+
+- はじめに
+    - T3 Stackってなに
+    - 自己紹介
+    - アイスブレイク
+    - 流れの説明
+- T3 Stack
+- TypeScript
+- Next.js
+- Tailwind CSS
+- Prisma
+- tRPC
+- NextAuth.js
+
+### ハンズオン開始
+
+- テーマを説明。それにそってすすめてもらうイメージ
+- 最後はなんとなく成果共有して終わりたい。どっかで乾杯もしたいね🍻
 
 ## 参加者があ当日までに準備しておくとよさそうなこと
 
 WIP
 https://github.com/ksyunnnn/hands-on-t3-app/issues/5
+
