@@ -2,10 +2,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../server/db/client";
 
+// このAPI Routeはなくてもよくない？trpc.useQueryで同じことできそう
 const examples = async (req: NextApiRequest, res: NextApiResponse) => {
   const examples = await prisma.example.findMany();
 
-  console.log("------examples api works!!!!!!!!!!!!!---------")
   res.status(200).json(examples);
 };
 

@@ -1,13 +1,31 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useEffect, useMemo } from "react";
 import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
 
   const getAll = trpc.useQuery(["example.getAll"]);
-
+ 
   console.log({getAll})
+
+  useEffect(()=>{
+    (async()=>{
+      const res = await fetch("/api/examples")
+      console.log({res: await res.json()})
+    })()
+  },[])
+
+  const addExample = trpc.useMutation("example.add")
+  const addExampleStatus = useMemo(()=>{
+    if(addExample.isError) return "Error😢"
+    if(addExample.isLoading) return "Loading✌"
+    return null
+  },[addExample])
+  
+  useEffect(()=>console.log({addExample}),[addExample])
+
 
   return (
     <>
@@ -20,6 +38,12 @@ const Home: NextPage = () => {
       <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
+        </div>
+
+        <div className="pt-6 text-2xl flex justify-center items-center w-full">
+          <button onClick={()=>{
+            addExample.mutate()
+          }}>{addExampleStatus || "Create example"}</button>
         </div>
       </main>
     </>

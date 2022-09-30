@@ -18,4 +18,11 @@ export const exampleRouter = createRouter()
     async resolve({ ctx }) {
       return await ctx.prisma.example.findMany();
     },
+  })
+  .mutation("add",{
+    async resolve({ctx}){
+      ctx.prisma.example.create({
+        data: {}
+      })
+    }
   });
