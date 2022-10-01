@@ -67,7 +67,7 @@ const Home: NextPage = () => {
       <main className="container mx-auto grid grid-flow-col grid-cols-2 min-h-screen p-4">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center gap-10">
-            <div className="text-4xl font-medium font-mono">todo app 🍺</div>
+            <div className="text-6xl font-medium font-mono">TO DO 🍺</div>
             <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path></svg>
           </div>
         </div>
@@ -114,18 +114,21 @@ const Home: NextPage = () => {
               🍺
             </button>
          </form>
-         <div>
-         {todoAll.data && (
-            <ul className="space-y-4">
-              {!!todoAll.data.length && <li>TODOS</li>}
-              {todoAll.data.map((item) => (
-                <li key={item.id}>
-                  <h4>{item.content}</h4>
-                  <p>{`createdAt: ${item.createdAt}`}</p>
-                </li>
-              ))}
-            </ul>
-          )}
+         <div className="py-6 px-4 flex justify-center">
+          {todoAll.data && (
+              <ul>
+                <h2 className="my-10 text-4xl font-medium font-mono">{`Today's todo`}</h2>
+                <div className="overflow-scroll" style={{height: "72vh"}}>
+                  {todoAll.data.map((item) => (
+                    <li key={item.id} className="py-3">
+                      <h4 className="font-sans text-lg">{item.content}</h4>
+                      <p className="text-xs text-gray-400 mb-1">{`${item.createdAt}`}</p>
+                      <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{item.status}</span>
+                    </li>
+                  ))}
+                </div>
+              </ul>
+            )}
          </div>
       </main>
     </>
