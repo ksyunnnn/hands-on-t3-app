@@ -2,15 +2,30 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { trpc } from "../utils/trpc";
 import { signIn, signOut } from "next-auth/react";
+import { Prisma } from "@prisma/client";
+import { useState } from "react";
 
 const Home: NextPage = () => {
   const auth = trpc.useQuery(["auth.getSession"]); 
+  const todoAll = trpc.useQuery(["todo.getAll"]);
+  const todoMutation = trpc.useMutation("todo.create");
 
-  const onCreateTodo = (todo) => {
+  const [content, setContent] = useState<string>("");
+
+  const onCreateTodo = (todoInput: Omit<Prisma.TodoCreateInput,"status"|"user"|"createdAt">) => {
     if(!auth.data) {
       return alert("ログインして😢")
     }
-    // 
+    todoMutation.mutate({
+      ...todoInput,
+      userId: auth.data.user.id,
+      status: "incomplete",
+    },{
+      onSuccess: () => {
+        setContent("");
+        todoAll.refetch();
+      }
+    })
   }
 
   if(!auth.data) {
@@ -50,14 +65,17 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="container mx-auto grid grid-flow-col grid-cols-2 min-h-screen p-4">
-        <div className="flex items-center justify-center text-4xl font-medium font-mono">
+        <div className="flex items-center justify-center">
           <div className="flex flex-col items-center gap-10">
-            <div>todo app 🍺</div>
+            <div className="text-4xl font-medium font-mono">todo app 🍺</div>
             <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path></svg>
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="flex flex-col items-center gap-10">
+          <div className="flex flex-col items-center gap-6">
+            <div className="font-medium font-mono tracking-widest">
+             \ Welcome! /
+            </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={auth.data.user.image || ""} alt={auth.data.user.name || "user image"}  className="rounded-full shadow" />
             <button 
@@ -76,14 +94,18 @@ const Home: NextPage = () => {
             className="flex items-center justify-center text-4xl font-medium font-mono gap-4" 
             onSubmit={e=>{
               e.preventDefault();
-              onCreateTodo({});
+              onCreateTodo({
+                content: content,
+              });
             }}
           >
           <input 
             type="text" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5" 
             placeholder="..." 
-            required 
+            required
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             />
             <button
               type="submit"
@@ -92,6 +114,19 @@ const Home: NextPage = () => {
               🍺
             </button>
          </form>
+         <div>
+         {todoAll.data && (
+            <ul className="space-y-4">
+              {!!todoAll.data.length && <li>TODOS</li>}
+              {todoAll.data.map((item) => (
+                <li key={item.id}>
+                  <h4>{item.content}</h4>
+                  <p>{`createdAt: ${item.createdAt}`}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+         </div>
       </main>
     </>
   );
