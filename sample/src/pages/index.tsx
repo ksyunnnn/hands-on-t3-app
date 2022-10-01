@@ -119,13 +119,23 @@ const Home: NextPage = () => {
               <ul>
                 <h2 className="my-10 text-4xl font-medium font-mono">{`Today's todo`}</h2>
                 <div className="overflow-scroll" style={{height: "72vh"}}>
-                  {todoAll.data.map((item) => (
-                    <li key={item.id} className="py-3">
-                      <h4 className="font-sans text-lg">{item.content}</h4>
-                      <p className="text-xs text-gray-400 mb-1">{`${item.createdAt}`}</p>
-                      <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{item.status}</span>
-                    </li>
-                  ))}
+                  {
+                    todoAll.data.length > 0 ? (
+                      <>
+                        {
+                          todoAll.data.map((item) => (
+                            <li key={item.id} className="py-3">
+                              <h4 className="font-sans text-lg">{item.content}</h4>
+                              <p className="text-xs text-gray-400 mb-1">{`${item.createdAt}`}</p>
+                              <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{item.status}</span>
+                            </li>
+                          ))
+                        }
+                      </>
+                    ) : (
+                      <>なにもない・・</>
+                    )
+                  }
                 </div>
               </ul>
             )}
