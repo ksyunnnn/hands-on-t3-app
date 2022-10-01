@@ -24,6 +24,21 @@ umiちゃんオフィス(渋谷)
 #### Google Map
 https://goo.gl/maps/XYnKJUJtYYYn31x78
 
+### Wi-Fi情報
+
+##### モバイル用（スマホとかはこっちをおつかいください）
+SSID: `mobile-death`<br/>
+PW: `nullpoga`
+
+##### ゲスト用
+SSID: `-guestalt-`<br/>
+PW: `daisukidayo`
+
+または
+
+SSID: `+ EternalShiningRay +-`<br/>
+PW: `nullpoga`
+
 ## タイムテーブル
 
 ### 買い出し : 15時30分 ~ 
